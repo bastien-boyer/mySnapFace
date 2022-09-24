@@ -1,0 +1,13 @@
+<div class="face-snap-card" [ngClass]="{snapped : buttonText != 'J\'aime'}">
+    <h1>{{faceSnap.title | uppercase }}</h1>
+    <img [src]="faceSnap.imageUrl" [alt]="faceSnap.title">
+    <p>{{faceSnap.description}}</p>
+    <p>Posté le {{faceSnap.createdDate | date: 'd MMMM yyyy'}}</p>
+    <p *ngIf="faceSnap.localisation === 'Paris'">Photo prise à : {{faceSnap.localisation}}</p>
+    <div class="likeHandler">
+        <button (click)="onAddOrSubLike()">{{buttonText}}</button>
+        <div *ngIf="buttonText == 'Je n\'aime plus'">{{heartIcon}}</div>
+        <span [ngStyle]="{color : 'rgb(0,' + faceSnap.like + ',0)'}">{{faceSnap.like}} j'aime(s)</span>
+    </div>
+    <a routerLink="/facesnaps" >Back to the feed !</a>
+</div>
